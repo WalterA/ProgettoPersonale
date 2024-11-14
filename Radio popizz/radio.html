@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Radio Popizz</title>
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f2e5d5;
+            background-image: url('/asset/Bari_Mare2.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            padding: 20px;
+            text-align: left;
+            font-size: 24px;
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #ff9900;
+            text-shadow: 2px 2px #333;
+            font-size: 48px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .header img {
+            width: 120px;
+            height: auto;
+        }
+
+        footer {
+            background-color: #bc8f8fa8;
+            padding: 18px;
+            text-align: center;
+            color: black;
+        }
+
+        .bo {
+            border: 3px solid #66a8cc75;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .bo h2 {
+            margin: 0;
+            color: #ff9900;
+            text-shadow: 1px 1px #333;
+        }
+
+        #popizzLogo {
+            position: absolute;
+            top: 20px;
+            right: 40px; /* Spostato leggermente a sinistra per non toccare il video */
+        }
+
+        #my-video {
+            width: 100vw;
+            height: 60vh;
+            border: 3px solid #66a8cc75;
+        }
+
+        .contact {
+            text-align: center;
+            margin: 20px 0;
+            color: black;
+        }
+
+        .contact h2 {
+            margin: 0;
+        }
+
+        audio {
+            display: none;
+        }
+
+        .audio-control {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .audio-control button {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ff9900;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Radio PoPizz</h1>
+        <div id="popizzLogo">
+            <img class="img" src="popizzLogo.png" alt="Logo Radio PoPizz">
+        </div>
+    </header>
+
+    <div class="bo">
+        <video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" poster="asset/splashTv.png">
+            <source src="https://stream3.aswifi.it/radiopopizz/live/index.m3u8" type="application/x-mpegURL">
+            <!-- Aggiunto supporto per fullscreen -->
+            <button class="vjs-fullscreen-control" aria-disabled="false" title="Fullscreen"></button>
+        </video>
+    </div>
+
+    <div class="contact">
+        <h2>Telefono: 080.5245654</h2>
+        <h2>Whatsapp: 338.4820101</h2>
+    </div>
+
+    <div class="audio-control">
+        <audio id="audio" src="https://nr11.newradio.it/proxy/belviso2?mp=/stream" autoplay></audio>
+        <button onclick="toggleMute()">
+            🔊
+        </button>
+    </div>
+
+    <footer>
+        <p>
+            Eventi e Trenta S.r.l. - Piazza Luigi di Savoia - Bari -- P.iva 05306100727 <a href="mailto:info@radiopopizz.it">Contattaci</a>
+        </p>
+    </footer>
+
+    <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+    <script>
+        var player = videojs('my-video');
+        var audio = document.getElementById('audio');
+
+        function toggleMute() {
+            audio.muted = !audio.muted;
+            document.querySelector('.audio-control button').textContent = audio.muted ? '🔇' : '🔊';
+        }
+    </script>
+</body>
+
+</html>
