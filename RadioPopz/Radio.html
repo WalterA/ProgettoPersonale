@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Radio PoPizz</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+          crossorigin="anonymous">
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet">
+    <style>
+      /* Animazione di rotazione per il logo */
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .rotate {
+        animation: rotate 2s linear infinite;
+      }
+      /* Transizione fluida per il logo */
+      #logo {
+        transition: transform 0.5s ease;
+      }
+      /* Personalizzazione del pulsante play del video */
+      .vjs-big-play-button {
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header: Informazioni e audio player -->
+    <header class="container-fluid" style="background-color: rgb(255,239,96);">
+      <div class="row align-items-center p-5">
+        <div class="col text-start">
+          <h1>Radio PoPizz</h1>
+          <h2>Telefono: 080.5245654 - Whatsapp 338.4820101</h2>
+        </div>
+        <div class="col-auto text-end">
+          <img id="logo" width="150" src="https://www.radiopopizz.it/asset/popizzLogo.png" class="rounded" alt="Logo di Radio PoPizz">
+          <audio id="audioPlayer" src="https://nr11.newradio.it/proxy/belviso2?mp=/stream" type="audio/mp3">
+            Il tuo browser non supporta l'elemento audio.
+          </audio>
+          <button id="playButton" class="btn btn-outline-primary" style="background-color: rgb(255,239,96);" aria-label="Riproduci/Pausa">
+            Play
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main: Sezione video -->
+    <main class="container-fluid" style="background: linear-gradient(to right, white 50%, red 50%); border: 2px solid yellow;">
+      <div class="row align-items-center justify-content-center p-3">
+        <div class="col-auto">
+          <video id="my-video" class="video-js" controls preload="auto" width="auto" height="auto" poster="https://www.radiopopizz.it/asset/popizzLogo.png">
+            <source src="https://stream3.aswifi.it/radiopopizz/live/index.m3u8" type="application/x-mpegURL">
+            Il tuo browser non supporta il tag video.
+          </video>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer: Informazioni di contatto -->
+    <footer class="container-fluid bg-warning text-end p-3" style="background-color: rgb(255,239,96);">
+      <div class="row">
+        <div class="col">
+          <span>
+            Eventi e Trenta S.r.l. - Piazza Luigi di Savoia - Bari  --  P.iva 05306100727 
+            <a href="mailto:info@radiopopizz.it" aria-label="Invia una mail a info@radiopopizz.it">Contattaci</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Inclusione di Video.js e Bootstrap JS -->
+    <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+            crossorigin="anonymous"></script>
+    <script>
+      // Inizializzazione del player Video.js
+      var player = videojs('my-video');
+      
+      // Funzionalità play/pause per l'audio e animazione del logo
+      document.addEventListener("DOMContentLoaded", function() {
+        const audioPlayer = document.getElementById("audioPlayer");
+        const playButton = document.getElementById("playButton");
+        const logo = document.getElementById("logo");
+        
+        playButton.addEventListener("click", function() {
+          if (audioPlayer.paused) {
+            audioPlayer.play();
+            playButton.textContent = "Pause";
+            logo.classList.add("rotate");
+          } else {
+            audioPlayer.pause();
+            playButton.textContent = "Play";
+            logo.classList.remove("rotate");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
