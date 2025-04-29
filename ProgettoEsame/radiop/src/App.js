@@ -5,6 +5,7 @@ import PaginaR from './PaginaR';
 import Contatti from './Contatti';
 import './App.css';
 import Chat from './Chat';
+import Sponsor from './Sponsor';
 
 const pageVariants = {
   initial: { opacity: 0, x: -50 },
@@ -27,6 +28,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<motion.div {...pageVariants}><PaginaR /></motion.div>} />
         <Route path="/contatti" element={<motion.div {...pageVariants}><Contatti /></motion.div>} />
         <Route path="/Chat" element={<motion.div {...pageVariants}><Chat /></motion.div>} />
+        <Route path="/Sponsor" element={<motion.div {...pageVariants}><Sponsor /></motion.div>} />
       </Routes>
     </AnimatePresence>
   );
@@ -61,6 +63,8 @@ function App() {
                 <Link to="/contatti">Contatti</Link>
                 <span className="separator">|</span>
                 <Link to="/Chat">Chat</Link>
+                <span className="separator">|</span>
+                <Link to="/Sponsor">Sponsor</Link>
               </div>
               <div className="logo-container">
                 <h1 className="logo-text">Radio PoPizz <br/> <h6> Clicca sul logo per ascoltare la tua radio.</h6></h1>
