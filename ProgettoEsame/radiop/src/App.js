@@ -24,11 +24,12 @@ const AnimatedRoutes = () => {
 
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+      <Routes location={location} key={location.pathname}>        
         <Route path="/" element={<motion.div {...pageVariants}><PaginaR /></motion.div>} />
         <Route path="/contatti" element={<motion.div {...pageVariants}><Contatti /></motion.div>} />
         <Route path="/Chat" element={<motion.div {...pageVariants}><Chat /></motion.div>} />
         <Route path="/Sponsor" element={<motion.div {...pageVariants}><Sponsor /></motion.div>} />
+        <Route path="*" element={<motion.div {...pageVariants}><div>404 - Pagina non trovata</div></motion.div>} />
       </Routes>
     </AnimatePresence>
   );
